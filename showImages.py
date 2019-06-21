@@ -5,7 +5,7 @@ from imageManager import Photo
 
 # Initialise pygame and window settings
 pygame.init()
-(width, height) = (600, 400)
+(width, height) = (1920, 1080)
 screen = pygame.display.set_mode((width, height), HWSURFACE|DOUBLEBUF|RESIZABLE)
 pygame.display.set_caption('Taskboard Timeline')
 
