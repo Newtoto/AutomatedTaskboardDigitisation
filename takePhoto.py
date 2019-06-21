@@ -15,7 +15,7 @@ def TakePhoto():
     # Allow camera to focus
     time.sleep(10)
     # Set image directory target for each day
-    dailyDirectoryName = './' + time.strftime("%Y-%m-%d/")
+    dailyDirectoryName = './Images/' + time.strftime("%Y-%m-%d/")
     if not os.path.exists(dailyDirectoryName):
         os.makedirs(dailyDirectoryName)
     # Save image and append time
