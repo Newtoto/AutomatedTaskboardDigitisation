@@ -3,8 +3,7 @@ from pygame.locals import *
 
 from imageManager import Photo
 
-print("Oi oi")
-
+# Initialise pygame and window settings
 pygame.init()
 (width, height) = (600, 400)
 screen = pygame.display.set_mode((width, height), HWSURFACE|DOUBLEBUF|RESIZABLE)
@@ -15,30 +14,41 @@ photo0 = Photo("./Images/2019-02-28/taskboardImage_12-58-25.jpg")
 photo1 = Photo("./Images/2019-02-28/taskboardImage_13-00-10.jpg")
 photo2 = Photo("./Images/2019-02-28/taskboardImage_13-04-56.jpg")
 
-images = [photo0, photo1, photo2]
+IMAGES = [photo0, photo1, photo2]
 
 currentImage = 0
 
+def updateImage():
+    # Only update when image is changed
+    IMAGES[currentImage].resize(width, height)
+    IMAGES[currentImage].draw(screen)
+    # Update all changed screen elements
+    pygame.display.update()
+
+# Show initial image
+updateImage()
+
+# Main loop
 RUNNING = True
 
 while RUNNING:
-    
-    images[currentImage].resize(width, height)
-    images[currentImage].draw(screen)
-     
     for event in pygame.event.get():
+        # Exit on close button press
         if event.type == pygame.QUIT:
             pygame.quit()
             running = False
+        # Window has been resized
         if event.type == pygame.VIDEORESIZE:
             (width, height) = (event.w, event.h)
             screen = pygame.display.set_mode((width, height), HWSURFACE|DOUBLEBUF|RESIZABLE)
+            updateImage()
+        # Mouse button has been clicked
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if(currentImage == len(images) - 1):
+            if currentImage == len(IMAGES) - 1:
                 currentImage = 0
             else:
                 # Increments current image if left mouse is clicked, does not if it isn't
                 currentImage += pygame.mouse.get_pressed()[0]
-
-        # Update all changed screen elements
-        pygame.display.update()
+            # Display new image
+            updateImage()
+            
