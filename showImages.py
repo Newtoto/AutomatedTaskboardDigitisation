@@ -8,6 +8,7 @@ pygame.init()
 (width, height) = (1920, 1080)
 screen = pygame.display.set_mode((width, height), HWSURFACE|DOUBLEBUF|RESIZABLE)
 pygame.display.set_caption('Taskboard Timeline')
+WHITE = (255, 255, 255)
 
 # Initalise text
 pygame.font.init()
@@ -23,6 +24,7 @@ IMAGES = [photo0, photo1, photo2]
 currentImage = 0
 
 def updateImage():
+    screen.fill((WHITE))
     # Only update when image is changed
     IMAGES[currentImage].resize(width, height)
     IMAGES[currentImage].draw(screen)
@@ -42,6 +44,7 @@ updateImage()
 RUNNING = True
 
 while RUNNING:
+
     for event in pygame.event.get():
         # Exit on close button press
         if event.type == pygame.QUIT:
@@ -54,11 +57,13 @@ while RUNNING:
             updateImage()
         # Mouse button has been clicked
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if currentImage == len(IMAGES) - 1:
+            # Increments current image if left mouse is clicked, does not if it isn't
+            currentImage += pygame.mouse.get_pressed()[0]
+            
+            # Wrap to first image when end is reached
+            if currentImage == len(IMAGES):
                 currentImage = 0
-            else:
-                # Increments current image if left mouse is clicked, does not if it isn't
-                currentImage += pygame.mouse.get_pressed()[0]
+                
             # Display new image
             updateImage()
             

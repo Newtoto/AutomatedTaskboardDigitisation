@@ -59,6 +59,10 @@ class Photo:
         scaled_height = math.floor(scaled_height)
         scaled_width = math.floor(scaled_width)
 
+        # Offset postions to center image
+        self.xpos = (screen_width - scaled_width)/2
+        self.ypos = (screen_height - scaled_height)/2
+
         # Create scaled image
         self.scaledImage = pygame.transform.scale(self.image, (scaled_width, scaled_height))
 
