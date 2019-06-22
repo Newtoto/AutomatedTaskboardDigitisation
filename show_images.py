@@ -17,10 +17,16 @@ DATE_FONT = pygame.font.SysFont('Helvetica', 30)
 
 # Initialise photos
 photo0 = Photo("./Images/2019-02-28/taskboardImage_12-58-25.jpg")
-photo1 = Photo("./Images/2019-02-28/taskboardImage_13-00-10.jpg")
-photo2 = Photo("./Images/2019-02-28/taskboardImage_13-04-56.jpg")
+photo1 = Photo("./Images/2019-02-28/taskboardImage_12-58-26.jpg")
+photo2 = Photo("./Images/2019-02-28/taskboardImage_12-58-27.jpg")
+photo3 = Photo("./Images/2019-02-28/taskboardImage_12-58-28.jpg")
+photo4 = Photo("./Images/2019-02-28/taskboardImage_12-58-29.jpg")
+photo5 = Photo("./Images/2019-02-28/taskboardImage_12-58-30.jpg")
+photo6 = Photo("./Images/2019-02-28/taskboardImage_12-58-31.jpg")
+photo7 = Photo("./Images/2019-02-28/taskboardImage_13-00-10.jpg")
+photo8 = Photo("./Images/2019-02-28/taskboardImage_13-04-56.jpg")
 
-IMAGES = [photo0, photo1, photo2]
+IMAGES = [photo0, photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8]
 
 # Initialise slider
 slider_height_percent = 0.1
