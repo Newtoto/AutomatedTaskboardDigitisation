@@ -21,8 +21,11 @@ class Photo:
         self.date_text = re.search("Images/(.*)/", filePath).group(1)
         self.time_text = re.search("taskboardImage_(.*).jpg", filePath).group(1)
 
-    def draw(self, screen, font):
-        '''Draws image and info text onto screen'''
+    def draw(self, screen, font, area_width, area_height):
+        '''Draws scaled image and info text onto screen'''
+        # Scale image
+        self.resize(area_width, area_height)
+        # Show image
         screen.blit(self.scaled_image, (self.xpos, self.ypos))
         # Write text
         date_text = font.render(self.date_text, False, (0, 0, 0))
@@ -35,10 +38,8 @@ class Photo:
         # width = ratio * height
         # If this is lower, width determines maximum size
         screen_ratio = area_width/area_height
-        print(screen_ratio)
         # If this is lower, height determines maximum size
         image_ratio = self.width/self.height
-        print(image_ratio)
 
         # Set height and width
         (scaled_height, scaled_width) = (area_height, area_width)
