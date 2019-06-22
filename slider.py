@@ -48,8 +48,11 @@ class Slider:
         # Calculate width of each segment
         segment_width = self.rect.width / self.segment_quantity
         for x in range(0, self.segment_quantity):
-            # Colour of segment
-            colour_value = 30
+            # Alternate segment colour
+            if x % 2 == 0:
+                colour_value = 30 
+            else:
+                colour_value = 90
             # Uncomment below for debugging (doesn't work for lots of segments)
             # colour_value = 50 * x + 40
             segment_colour = (colour_value, colour_value, colour_value)
