@@ -1,7 +1,8 @@
 import pygame
 from pygame.locals import *
 
-from imageManager import Photo
+from image_manager import Photo
+from slider import SliderContainer
 
 # Initialise pygame and window settings
 pygame.init()
@@ -23,22 +24,25 @@ IMAGES = [photo0, photo1, photo2]
 
 currentImage = 0
 
-def updateImage():
+# Initialise slider
+slider_height_percent = 0.1
+SLIDER = SliderContainer(screen, slider_height_percent, IMAGES)
+
+def draw():
+    # Background colour
     screen.fill((WHITE))
-    # Only update when image is changed
-    IMAGES[currentImage].resize(width, height)
-    IMAGES[currentImage].draw(screen)
-    # Write text
-    dateText = myfont.render(IMAGES[currentImage].dateText, False, (0, 0, 0))
-    timeText = myfont.render(IMAGES[currentImage].timeText, False, (0, 0, 0))
-    screen.blit(dateText,(0, 0))
-    screen.blit(timeText,(0, 30))
-    
+    # Scale image
+    IMAGES[currentImage].resize(width, height * (1 - slider_height_percent))
+    # Draw image and date text
+    IMAGES[currentImage].draw(screen, myfont)
+    # Draw slider
+    SLIDER.draw(screen)
+
     # Update all changed screen elements
     pygame.display.update()
 
 # Show initial image
-updateImage()
+draw()
 
 # Main loop
 RUNNING = True
@@ -54,7 +58,8 @@ while RUNNING:
         if event.type == pygame.VIDEORESIZE:
             (width, height) = (event.w, event.h)
             screen = pygame.display.set_mode((width, height), HWSURFACE|DOUBLEBUF|RESIZABLE)
-            updateImage()
+            # Scale and redraw screen
+            draw()
         # Mouse button has been clicked
         if event.type == pygame.MOUSEBUTTONDOWN:
             # Increments current image if left mouse is clicked, does not if it isn't
@@ -64,6 +69,6 @@ while RUNNING:
             if currentImage == len(IMAGES):
                 currentImage = 0
                 
-            # Display new image
-            updateImage()
+            # Redraw screen
+            draw()
             
