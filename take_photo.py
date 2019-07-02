@@ -16,7 +16,7 @@ def take_photo():
     '''Takes photo and saves to specified directory with timestamp'''
     CAMERA.start_preview(alpha=200)
     # Allow camera to focus
-    time.sleep(10)
+    time.sleep(4)
     # Set image directory target for each day
     daily_directory_name = './Images/' + time.strftime("%Y-%m-%d/")
     if not os.path.exists(daily_directory_name):
@@ -33,8 +33,11 @@ PHOTO_TIME_1 = '09'
 PHOTO_TIME_2 = '17'
 
 RUNNING = True
+can_take_photo = False
 
 CAMERA = PiCamera()
+CAMERA.resolution = (1920, 1080)
+CAMERA.sensor_mode = 5
 
 # TakePhoto()
 
@@ -53,4 +56,10 @@ while RUNNING:
                 pygame.quit()
                 running = False
             elif event.key == pygame.K_p:
-                take_photo()
+                if can_take_photo == False:
+                    '''Readies Camera Preview'''
+                    CAMERA.start_preview()
+                    can_take_photo = True
+                else:
+                    take_photo()
+                    can_take_photo = False

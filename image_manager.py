@@ -1,4 +1,5 @@
 '''Contains Photo class'''
+from __future__ import division
 import pygame
 from pygame.locals import *
 
@@ -35,6 +36,9 @@ class Photo:
 
     def resize(self, area_width, area_height):
         '''Scales the image and centers within area'''
+        print self.width
+        print self.height
+        print self.width/self.height
         # width = ratio * height
         # If this is lower, width determines maximum size
         screen_ratio = area_width/area_height
@@ -43,7 +47,7 @@ class Photo:
 
         # Set height and width
         (scaled_height, scaled_width) = (area_height, area_width)
-
+        
         if screen_ratio < image_ratio:
             # Set width and calculate height
             scaled_width = area_width
@@ -52,10 +56,10 @@ class Photo:
             # Set height and calculate width
             scaled_height = area_height
             scaled_width = area_height * image_ratio
-
+        
         # Turn scaled values into integers
-        scaled_height = math.floor(scaled_height)
-        scaled_width = math.floor(scaled_width)
+        scaled_height = int(math.floor(scaled_height))
+        scaled_width = int(math.floor(scaled_width))
 
         # Offset postions to center image
         self.xpos = (area_width - scaled_width)/2

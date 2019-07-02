@@ -6,7 +6,7 @@ from slider import SliderContainer
 
 # Initialise pygame and window settings
 pygame.init()
-(width, height) = (1920, 1080)
+(width, height) = (1024, 800)
 screen = pygame.display.set_mode((width, height), HWSURFACE|DOUBLEBUF|RESIZABLE)
 pygame.display.set_caption('Taskboard Timeline')
 WHITE = (255, 255, 255)
