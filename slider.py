@@ -1,4 +1,5 @@
 '''All classes which pertain to the slider control at the bottom of the page'''
+from __future__ import division
 import math
 import pygame
 
@@ -73,11 +74,12 @@ class Slider:
 
     def draw_draggable_object(self, screen):
         '''Draws object which you drag to select the image'''
-        rect = ((self.dragger_xpos_percent * self.rect.width + self.rect.left, self.rect.top), (self.dragger_width, self.rect.height))
+        rect = ((int(self.dragger_xpos_percent * self.rect.width) + self.rect.left, self.rect.top), (self.dragger_width, self.rect.height))
         pygame.draw.rect(screen, (255, 255, 255), rect)
 
     def drag(self, mouse_pos):
         '''Changes position of slider to mouse if in collision area'''
+        print mouse_pos
         # Check mouse is in range of clicking
         if self.rect.collidepoint(mouse_pos):
             self.dragger_xpos_percent = (mouse_pos[0] - (self.dragger_width / 2) - self.rect.left) / self.rect.width
@@ -93,4 +95,4 @@ class Slider:
     def calculate_image(self):
         '''Gives image closest to slider position'''
         print(self.segment_quantity * self.dragger_xpos_percent)
-        return math.floor(self.segment_quantity * self.dragger_xpos_percent)
+        return int(math.floor(self.segment_quantity * self.dragger_xpos_percent))
