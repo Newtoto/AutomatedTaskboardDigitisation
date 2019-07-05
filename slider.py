@@ -79,7 +79,6 @@ class Slider:
 
     def drag(self, mouse_pos):
         '''Changes position of slider to mouse if in collision area'''
-        print mouse_pos
         # Check mouse is in range of clicking
         if self.rect.collidepoint(mouse_pos):
             self.dragger_xpos_percent = (mouse_pos[0] - (self.dragger_width / 2) - self.rect.left) / self.rect.width

@@ -37,9 +37,6 @@ class Photo:
 
     def resize(self, area_width, area_height):
         '''Scales the image and centers within area'''
-        print self.width
-        print self.height
-        print self.width/self.height
         # width = ratio * height
         # If this is lower, width determines maximum size
         screen_ratio = area_width/area_height
