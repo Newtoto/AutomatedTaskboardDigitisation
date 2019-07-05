@@ -16,17 +16,20 @@ pygame.font.init()
 DATE_FONT = pygame.font.SysFont('Helvetica', 30)
 
 # Initialise photos
-photo0 = Photo("./Images/2019-02-28/taskboardImage_12-58-25.jpg")
-photo1 = Photo("./Images/2019-02-28/taskboardImage_12-58-26.jpg")
-photo2 = Photo("./Images/2019-02-28/taskboardImage_12-58-27.jpg")
-photo3 = Photo("./Images/2019-02-28/taskboardImage_12-58-28.jpg")
-photo4 = Photo("./Images/2019-02-28/taskboardImage_12-58-29.jpg")
-photo5 = Photo("./Images/2019-02-28/taskboardImage_12-58-30.jpg")
-photo6 = Photo("./Images/2019-02-28/taskboardImage_12-58-31.jpg")
-photo7 = Photo("./Images/2019-02-28/taskboardImage_13-00-10.jpg")
-photo8 = Photo("./Images/2019-02-28/taskboardImage_13-04-56.jpg")
+PRE_SPRINT_IMAGE = Photo("./Images/taskboardImage_2019-06-03_9-00.jpg")
+DAY_1_PHOTO = Photo("./Images/taskboardImage_2019-06-03_10-00.jpg")
+DAY_2_PHOTO = Photo("./Images/taskboardImage_2019-06-04_10-00.jpg")
+DAY_3_PHOTO = Photo("./Images/taskboardImage_2019-06-05_10-00.jpg")
+DAY_4_PHOTO = Photo("./Images/taskboardImage_2019-06-06_10-00.jpg")
+DAY_5_PHOTO = Photo("./Images/taskboardImage_2019-06-07_10-00.jpg")
+DAY_6_PHOTO = Photo("./Images/taskboardImage_2019-06-10_10-00.jpg")
+DAY_7_PHOTO = Photo("./Images/taskboardImage_2019-06-11_10-00.jpg")
+DAY_8_PHOTO = Photo("./Images/taskboardImage_2019-06-12_10-00.jpg")
+DAY_9_PHOTO = Photo("./Images/taskboardImage_2019-06-13_10-00.jpg")
+DAY_10_PHOTO = Photo("./Images/taskboardImage_2019-06-14_10-00.jpg")
+END_SPRINT_IMAGE = Photo("./Images/taskboardImage_2019-06-14_17-00.jpg")
 
-IMAGES = [photo0, photo1, photo2, photo3, photo4, photo5, photo6, photo7, photo8]
+IMAGES = [PRE_SPRINT_IMAGE, DAY_1_PHOTO, DAY_2_PHOTO, DAY_3_PHOTO, DAY_4_PHOTO, DAY_5_PHOTO, DAY_6_PHOTO, DAY_7_PHOTO, DAY_8_PHOTO, DAY_9_PHOTO, DAY_10_PHOTO,END_SPRINT_IMAGE,]
 
 # Initialise slider
 slider_height_percent = 0.1

@@ -8,7 +8,7 @@ import math
 
 class Photo:     
     '''Controls the drawing, scaling and placement of an image taken from an image file'''
-    # File path is written like "./Images/2019-02-28/taskboardImage_12-58-25.jpg"
+    # File path is this format: "./Images/taskboardImage_date_time.jpg"
 
     def __init__(self, filePath):
         self.image = pygame.image.load(filePath)
@@ -19,8 +19,9 @@ class Photo:
         self.xpos = 0
         self.ypos = 0
         # Get date and time from file path
-        self.date_text = re.search("Images/(.*)/", filePath).group(1)
-        self.time_text = re.search("taskboardImage_(.*).jpg", filePath).group(1)
+        dateAndTimeText = re.search("Images/taskboardImage_(.*).jpg", filePath).group(1)
+        self.date_text = dateAndTimeText.split("_")[0]
+        self.time_text = dateAndTimeText.split("_")[1]
 
     def draw(self, screen, font, area_width, area_height):
         '''Draws scaled image and info text onto screen'''
