@@ -18,11 +18,11 @@ def take_photo():
     # Allow camera to focus
     time.sleep(4)
     # Set image directory target for each day
-    daily_directory_name = './Images/' + time.strftime("%Y-%m-%d/")
-    if not os.path.exists(daily_directory_name):
-        os.makedirs(daily_directory_name)
+    directory_name = './Images/'
+    if not os.path.exists(directory_name):
+        os.makedirs(directory_name)
     # Save image and append time
-    CAMERA.capture(daily_directory_name + 'taskboardImage' + time.strftime("_%H-%M-%S") + '.jpg')
+    CAMERA.capture(directory_name + 'taskboardImage' + time.strftime("_%Y-%m-%d_%H-%M-%S") + '.jpg')
     # Put camera back to sleep
     CAMERA.stop_preview()
 
