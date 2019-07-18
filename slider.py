@@ -93,4 +93,8 @@ class Slider:
 
     def calculate_image(self):
         '''Gives image closest to slider position'''
+        # Stops dragger registering negative numbers
+        if self.dragger_xpos_percent < 0:
+            self.dragger_xpos_percent = 0
+        print(self.dragger_xpos_percent)
         return int(math.floor(self.segment_quantity * self.dragger_xpos_percent))

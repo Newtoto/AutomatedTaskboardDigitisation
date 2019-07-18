@@ -21,17 +21,27 @@ DATE_FONT = pygame.font.SysFont('Helvetica', 30)
 IMAGES = []
 
 # Add images in folder to array
-for filename in glob.glob("./Images/*.jpg"):
+for filename in glob.glob("../TaskboardTracker/Images/*.jpg"):
+# For testing outside of a build use this line instead
+#for filename in glob.glob("./Images/*.jpg"):
     image = Photo(filename)
-    # Add image in ordered location
-    
-    IMAGES.append(image)
-
-# Order images
-for x in range(0, len(IMAGES)):
-    temp_image_array = []
-    print(IMAGES[x].ordering_value)
-    
+    # Add first image to array
+    if len(IMAGES) == 0:
+        IMAGES.append(image)
+    else:
+        image_added = False
+        # Add image in ordered location
+        for x in range(0, len(IMAGES)):
+            # If image order value is lower, it comes earlier
+            if image.ordering_value < IMAGES[x].ordering_value:
+                # Insert image before comparison and set flag
+                IMAGES.insert(x, image)
+                image_added = True
+                # Image added, so break out
+                break
+        # Add image to end if not added
+        if image_added == False:
+            IMAGES.append(image)
 
 print(IMAGES)
 
@@ -67,10 +77,8 @@ def move_slider():
         else:
             SLIDER_CONTAINER.draw(screen)
 
-
 # Show initial image
 draw_all()
-
 
 # Main loop
 RUNNING = True
@@ -90,15 +98,4 @@ while RUNNING:
             screen = pygame.display.set_mode((width, height), HWSURFACE|DOUBLEBUF|RESIZABLE)
             # Scale and redraw screen
             draw_all()
-        # # Mouse button has been clicked
-        # if event.type == pygame.MOUSEBUTTONDOWN:
-        #     # Increments current image if left mouse is clicked, does not if it isn't
-        #     SLIDER_CONTAINER.slider.current_image += pygame.mouse.get_pressed()[0]
-            
-        #     # Wrap to first image when end is reached
-        #     if SLIDER_CONTAINER.slider.current_image == len(IMAGES):
-        #         SLIDER_CONTAINER.slider.current_image = 0
-                
-        #     # Redraw screen
-        #     draw()
             

@@ -22,7 +22,7 @@ class Photo:
         dateAndTimeText = re.search("Images/taskboardImage_(.*).jpg", filePath).group(1)
         self.date_text = dateAndTimeText.split("_")[0]
         self.time_text = dateAndTimeText.split("_")[1]
-        self.ordering_value = (self.date_text + self.time_text).replace("-","")
+        self.ordering_value = int((self.date_text + self.time_text).replace("-",""))
 
     def draw(self, screen, font, area_width, area_height):
         '''Draws scaled image and info text onto screen'''

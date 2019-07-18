@@ -1,15 +1,15 @@
-# import cx_Freeze
+import cx_Freeze
 
-# executables = [cx_Freeze.Executable("show_images.py")]
+executables = [cx_Freeze.Executable("TaskboardTimeline.py")]
 
-# cx_Freeze.setup(
-#     name="TaskboardDigitisation",
-#     options={"build_exe": {"packages":["pygame"],
-#                            "include_files":["Images"]}},
-#     executables = executables
+cx_Freeze.setup(
+     name="TaskboardTimeline",
+     options={"build_exe": {"packages":["pygame"],
+                            "include_files":[]}},
+    executables = executables
+)
+ 
+#from distutils.core import setup
+#import py2exe
 
-#     )
-from distutils.core import setup
-import py2exe
-
-setup(console=['show_images.py'])
+#setup(console=['show_images.py'])
