@@ -1,5 +1,7 @@
 import pygame
 from pygame.locals import *
+from PIL import Image
+import glob
 
 from image_manager import Photo
 from slider import SliderContainer
@@ -16,20 +18,13 @@ pygame.font.init()
 DATE_FONT = pygame.font.SysFont('Helvetica', 30)
 
 # Initialise photos
-PRE_SPRINT_IMAGE = Photo("./Images/taskboardImage_2019-06-03_9-00.jpg")
-DAY_1_PHOTO = Photo("./Images/taskboardImage_2019-06-03_10-00.jpg")
-DAY_2_PHOTO = Photo("./Images/taskboardImage_2019-06-04_10-00.jpg")
-DAY_3_PHOTO = Photo("./Images/taskboardImage_2019-06-05_10-00.jpg")
-DAY_4_PHOTO = Photo("./Images/taskboardImage_2019-06-06_10-00.jpg")
-DAY_5_PHOTO = Photo("./Images/taskboardImage_2019-06-07_10-00.jpg")
-DAY_6_PHOTO = Photo("./Images/taskboardImage_2019-06-10_10-00.jpg")
-DAY_7_PHOTO = Photo("./Images/taskboardImage_2019-06-11_10-00.jpg")
-DAY_8_PHOTO = Photo("./Images/taskboardImage_2019-06-12_10-00.jpg")
-DAY_9_PHOTO = Photo("./Images/taskboardImage_2019-06-13_10-00.jpg")
-DAY_10_PHOTO = Photo("./Images/taskboardImage_2019-06-14_10-00.jpg")
-END_SPRINT_IMAGE = Photo("./Images/taskboardImage_2019-06-14_17-00.jpg")
+IMAGES = []
 
-IMAGES = [PRE_SPRINT_IMAGE, DAY_1_PHOTO, DAY_2_PHOTO, DAY_3_PHOTO, DAY_4_PHOTO, DAY_5_PHOTO, DAY_6_PHOTO, DAY_7_PHOTO, DAY_8_PHOTO, DAY_9_PHOTO, DAY_10_PHOTO,END_SPRINT_IMAGE,]
+for filename in glob.glob("./Images/*.jpg"):
+    image = Photo(filename)
+    IMAGES.append(image)
+    
+print(IMAGES)
 
 # Initialise slider
 slider_height_percent = 0.1
