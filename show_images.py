@@ -20,10 +20,19 @@ DATE_FONT = pygame.font.SysFont('Helvetica', 30)
 # Initialise photos
 IMAGES = []
 
+# Add images in folder to array
 for filename in glob.glob("./Images/*.jpg"):
     image = Photo(filename)
-    IMAGES.append(image)
+    # Add image in ordered location
     
+    IMAGES.append(image)
+
+# Order images
+for x in range(0, len(IMAGES)):
+    temp_image_array = []
+    print(IMAGES[x].ordering_value)
+    
+
 print(IMAGES)
 
 # Initialise slider

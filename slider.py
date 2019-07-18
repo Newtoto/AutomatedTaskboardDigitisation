@@ -93,5 +93,4 @@ class Slider:
 
     def calculate_image(self):
         '''Gives image closest to slider position'''
-        print(self.segment_quantity * self.dragger_xpos_percent)
         return int(math.floor(self.segment_quantity * self.dragger_xpos_percent))
