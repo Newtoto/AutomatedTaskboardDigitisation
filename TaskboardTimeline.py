@@ -21,7 +21,7 @@ DATE_FONT = pygame.font.SysFont('Helvetica', 30)
 IMAGES = []
 
 # Add images in folder to array
-for filename in glob.glob("../TaskboardTracker/Images/*.jpg"):
+for filename in glob.glob("/home/pi/Desktop/Images/*.jpg"):
 # For testing outside of a build use this line instead
 #for filename in glob.glob("./Images/*.jpg"):
     image = Photo(filename)

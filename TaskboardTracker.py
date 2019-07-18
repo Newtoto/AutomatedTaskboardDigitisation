@@ -18,7 +18,7 @@ def take_photo():
     # Allow camera to focus
     time.sleep(4)
     # Set image directory target for each day
-    directory_name = './Images/'
+    directory_name = '/home/pi/Desktop/Images/'
     if not os.path.exists(directory_name):
         os.makedirs(directory_name)
     # Save image and append time
