@@ -28,7 +28,7 @@ def take_photo():
 
 # Used if specific times are desired rather than hourly photos
 # Time is 9:00
-PHOTO_TIME_1 = '09'
+PHOTO_TIME_1 = '10'
 # Time is 17:00
 PHOTO_TIME_2 = '17'
 
@@ -45,7 +45,9 @@ while RUNNING:
 
     # Check if minutes is 00, to trigger only 1 photo per hour
     if time.strftime("%M%S") == "0000":
-        take_photo()
+        hour = time.strftime("%H")
+        if hour == PHOTO_TIME_1 or hour == PHOTO_TIME_2:
+            take_photo()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
